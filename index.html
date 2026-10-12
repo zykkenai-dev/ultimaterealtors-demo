@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ultimate Realtors — Where We Build Your Visions | Tricity Real Estate Advisory</title>
+<meta name="description" content="Ultimate Realtors is a Real Estate Advisory firm in Tricity for 12+ years — Chandigarh, Mohali, Panchkula, Zirakpur, New Chandigarh & Aerocity. Residential, Commercial & Industrial expertise with due diligence, valuations & documentation." />
+<link rel="icon" href="http://www.ultimaterealtors.in/wp-content/uploads/2022/12/Logo-Ultimate-Realtors-173x72.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+<style>
+:root{
+  --bg:#0a0d12; --bg2:#0e131b; --card:#121824; --line:rgba(255,255,255,.09);
+  --gold:#c9a15c; --gold2:#e8c886; --cream:#f5efe2; --muted:#9aa3b2;
+  --green:#22c55e; --radius:20px;
+  --font-d:'Playfair Display',serif; --font-b:'Plus Jakarta Sans',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--cream);font-family:var(--font-b);overflow-x:hidden;line-height:1.6}
+::selection{background:var(--gold);color:#111}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.container{width:min(1240px,92%);margin:0 auto}
+section{position:relative;padding:110px 0}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:18px}
+.eyebrow::before{content:"";width:38px;height:1px;background:var(--gold);display:inline-block}
+h1,h2{font-family:var(--font-d);line-height:1.08;font-weight:700}
+.h2{font-size:clamp(2rem,4.4vw,3.4rem)}
+.h2 em{color:var(--gold);font-style:italic}
+.lead{color:var(--muted);font-size:clamp(1rem,1.4vw,1.15rem);max-width:640px}
+.btn{display:inline-flex;align-items:center;gap:12px;padding:16px 30px;border-radius:100px;font-weight:700;font-size:14px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;border:1px solid transparent;transition:.35s;position:relative;overflow:hidden}
+.btn-gold{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#141414}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 18px 40px -10px rgba(201,161,92,.55)}
+.btn-ghost{border-color:rgba(255,255,255,.25);color:var(--cream);background:rgba(255,255,255,.04);backdrop-filter:blur(8px)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold2);transform:translateY(-3px)}
+
+/* ===== PRELOADER ===== */
+#loader{position:fixed;inset:0;z-index:9999;background:#07090d;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:22px;transition:opacity .8s,visibility .8s}
+#loader.done{opacity:0;visibility:hidden}
+#loader .l-logo{width:210px;filter:brightness(1.1);animation:logoPulse 2s ease-in-out infinite}
+@keyframes logoPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.05);opacity:.85}}
+#loader .l-bar{width:min(420px,70vw);height:2px;background:rgba(255,255,255,.12);border-radius:99px;overflow:hidden}
+#loader .l-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:99px}
+#loader .l-pct{font-family:var(--font-d);font-size:3rem;color:var(--gold2)}
+#loader .l-sub{font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--muted)}
+#curtain{position:fixed;inset:0;z-index:9998;background:linear-gradient(180deg,var(--gold2),var(--gold));transform:scaleY(1);transform-origin:top;transition:transform 1s cubic-bezier(.76,0,.24,1) .15s;pointer-events:none}
+#curtain.lift{transform:scaleY(0)}
+
+/* ===== CURSOR / PROGRESS ===== */
+#progress{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--gold),var(--gold2));z-index:2000}
+.cursor-dot,.cursor-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:3000;border-radius:50%;transform:translate(-50%,-50%)}
+.cursor-dot{width:8px;height:8px;background:var(--gold)}
+.cursor-ring{width:38px;height:38px;border:1px solid rgba(201,161,92,.6);transition:width .25s,height .25s,background .25s}
+body.link-hover .cursor-ring{width:64px;height:64px;background:rgba(201,161,92,.12)}
+@media(hover:none){.cursor-dot,.cursor-ring{display:none}}
+
+/* ===== NAV ===== */
+header{position:fixed;top:0;left:0;right:0;z-index:1000;transition:.4s;padding:18px 0}
+header.scrolled{background:rgba(10,13,18,.82);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);padding:10px 0}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{width:150px;background:#fff;border-radius:10px;padding:6px 10px}
+.links{display:flex;gap:34px;align-items:center}
+.links a{font-size:13px;letter-spacing:2px;text-transform:uppercase;font-weight:600;color:#d6dbe3;position:relative;padding:6px 0}
+.links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--gold);transition:.3s}
+.links a:hover::after,.links a.active::after{width:100%}
+.links a:hover{color:var(--gold2)}
+.nav-cta{display:flex;gap:12px;align-items:center}
+.call-pill{display:inline-flex;align-items:center;gap:10px;background:rgba(201,161,92,.12);border:1px solid rgba(201,161,92,.4);padding:10px 18px;border-radius:100px;font-weight:700;font-size:13px}
+.call-pill i{color:var(--gold)}
+#hamburger{display:none;background:none;border:1px solid var(--line);color:#fff;border-radius:10px;padding:10px 12px;font-size:18px;cursor:pointer}
+.mobile-menu{display:none}
+/* dropdown */
+.has-drop{position:relative}
+.drop{position:absolute;top:130%;left:50%;transform:translateX(-50%) translateY(10px);background:#101724;border:1px solid var(--line);border-radius:14px;min-width:220px;padding:10px;opacity:0;visibility:hidden;transition:.3s;box-shadow:0 30px 60px rgba(0,0,0,.5)}
+.has-drop:hover .drop{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.drop a{display:block!important;padding:12px 14px!important;border-radius:10px}
+.drop a:hover{background:rgba(201,161,92,.12)}
+
+/* ===== HERO ===== */
+#home{min-height:100svh;display:flex;align-items:flex-end;padding:160px 0 0;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:-2}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.8s ease;background-size:cover;background-position:center;transform:scale(1.08)}
+.hero-slide.on{opacity:1;animation:kenburns 9s ease forwards}
+@keyframes kenburns{from{transform:scale(1.12)}to{transform:scale(1)}}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,9,13,.62) 0%,rgba(7,9,13,.45) 40%,rgba(10,13,18,.94) 82%,var(--bg) 100%),radial-gradient(60% 50% at 20% 60%,rgba(201,161,92,.18),transparent)}
+.hero-inner{padding:0 26px 40px;width:100%}
+.hero-layout{display:grid;grid-template-columns:1.08fr .92fr;gap:24px;align-items:center}
+.hero-copy{padding-left:44px}
+.hero-visual{position:relative;display:flex;justify-content:center;align-items:center}
+.hero-visual::before{content:"";position:absolute;width:120%;aspect-ratio:1;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(201,161,92,.30),transparent 65%);pointer-events:none}
+.glass-card{position:relative;width:min(100%,400px);border-radius:26px;overflow:hidden;border:1px solid rgba(201,161,92,.55);box-shadow:0 50px 100px rgba(0,0,0,.6),0 0 80px rgba(201,161,92,.18);animation:floatY 6s ease-in-out infinite}
+.glass-card img{width:100%;height:540px;object-fit:cover}
+.glass-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,9,13,.05) 40%,rgba(7,9,13,.55) 100%);pointer-events:none}
+.glass-chip{position:absolute;display:inline-flex;align-items:center;gap:8px;background:rgba(10,13,18,.68);backdrop-filter:blur(10px);border:1px solid rgba(201,161,92,.55);color:var(--gold2);font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:10px 16px;border-radius:100px;z-index:2;box-shadow:0 12px 30px rgba(0,0,0,.45)}
+.glass-chip i{color:var(--gold)}
+.chip-a{top:18px;left:18px}
+.chip-b{bottom:18px;right:18px}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(201,161,92,.45);background:rgba(0,0,0,.35);backdrop-filter:blur(10px);padding:9px 18px;border-radius:100px;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--gold2);max-width:100%}
+.hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green);animation:blink 1.6s infinite}
+@keyframes blink{50%{opacity:.3}}
+#home h1{font-size:clamp(2.6rem,6.6vw,5.2rem);margin:22px 0 18px;max-width:900px;overflow-wrap:break-word;text-wrap:balance}
+#home h1 .gold{background:linear-gradient(120deg,#f3d9a0,var(--gold) 60%,#9a7433);-webkit-background-clip:text;background-clip:text;color:transparent;font-style:italic}
+#home h1 .line{display:block;overflow:hidden}
+#home h1 .line span{display:block;transform:translateY(110%);animation:riseUp 1s cubic-bezier(.2,.7,.2,1) forwards}
+#home h1 .line:nth-child(2) span{animation-delay:.15s}
+#home h1 .line:nth-child(3) span{animation-delay:.3s}
+@keyframes riseUp{to{transform:translateY(0)}}
+.hero-sub{color:#c8cfd9;max-width:640px;font-size:clamp(1rem,1.5vw,1.18rem)}
+.hero-btns{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
+.hero-meta{display:flex;gap:14px;margin-top:26px;flex-wrap:wrap;color:#aeb6c2;font-size:14px}
+.hero-meta span{display:inline-flex;gap:8px;align-items:center;background:rgba(255,255,255,.06);border:1px solid var(--line);padding:9px 16px;border-radius:100px;backdrop-filter:blur(8px)}
+.hero-meta i{color:var(--gold)}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin:46px 0 0}
+.hstat{background:rgba(14,19,27,.82);backdrop-filter:blur(12px);padding:28px 22px;text-align:center}
+.hstat b{font-family:var(--font-d);font-size:clamp(1.8rem,3vw,2.6rem);color:var(--gold2);display:block}
+.hstat small{letter-spacing:2px;text-transform:uppercase;font-size:11px;color:var(--muted)}
+.scroll-hint{display:flex;align-items:center;gap:14px;justify-content:center;padding:26px;color:var(--muted);font-size:11px;letter-spacing:4px;text-transform:uppercase}
+.mouse{width:24px;height:38px;border:2px solid rgba(255,255,255,.35);border-radius:14px;position:relative}
+.mouse::after{content:"";position:absolute;left:50%;top:7px;width:4px;height:8px;margin-left:-2px;border-radius:4px;background:var(--gold);animation:wheel 1.6s infinite}
+@keyframes wheel{0%{transform:translateY(0);opacity:1}100%{transform:translateY(12px);opacity:0}}
+.hero-dots{display:flex;gap:8px;margin-top:18px}
+.hero-dots button{width:34px;height:4px;border-radius:99px;border:0;background:rgba(255,255,255,.2);cursor:pointer;transition:.3s}
+.hero-dots button.on{background:var(--gold)}
+
+/* ===== MARQUEE ===== */
+.marquee{background:linear-gradient(90deg,var(--gold2),var(--gold));color:#151515;overflow:hidden;white-space:nowrap;padding:14px 0;font-weight:800;letter-spacing:3px;text-transform:uppercase;font-size:13px;transform:rotate(-1deg) scale(1.02)}
+.marquee .track{display:inline-flex;gap:40px;animation:scroll 22s linear infinite;padding-right:40px}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ===== REVEAL ===== */
+[data-reveal]{opacity:0;transform:translateY(36px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+[data-reveal].in{opacity:1;transform:none}
+[data-reveal="left"]{transform:translateX(-46px)}
+[data-reveal="right"]{transform:translateX(46px)}
+[data-reveal="zoom"]{transform:scale(.92)}
+[data-reveal].in{transform:none}
+.stagger>*{opacity:0;transform:translateY(26px);transition:.7s}
+.stagger.in>*{opacity:1;transform:none}
+.stagger.in>*:nth-child(2){transition-delay:.12s}.stagger.in>*:nth-child(3){transition-delay:.24s}
+.stagger.in>*:nth-child(4){transition-delay:.36s}.stagger.in>*:nth-child(5){transition-delay:.48s}
+.stagger.in>*:nth-child(6){transition-delay:.6s}.stagger.in>*:nth-child(7){transition-delay:.72s}
+.stagger.in>*:nth-child(8){transition-delay:.84s}
+
+/* ===== ABOUT ===== */
+.about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center;margin-top:34px}
+.about-media{position:relative}
+.about-media .main{border-radius:24px;overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,.5);position:relative}
+.about-media .main img{height:520px;width:100%;object-fit:cover;transition:transform 1.2s}
+.about-media:hover .main img{transform:scale(1.06)}
+.exp-card{position:absolute;right:-18px;bottom:34px;background:linear-gradient(135deg,#1a2230,#0e1420);border:1px solid rgba(201,161,92,.4);border-radius:18px;padding:22px 26px;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.exp-card b{font-family:var(--font-d);font-size:2.6rem;color:var(--gold2);display:block;line-height:1}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:26px 0}
+.checks li{list-style:none;display:flex;gap:10px;align-items:center;background:rgba(255,255,255,.04);border:1px solid var(--line);padding:12px 14px;border-radius:12px;font-weight:600;font-size:14px}
+.checks i{color:var(--green)}
+.vision{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+.v-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;transition:.35s}
+.v-card:hover{border-color:rgba(201,161,92,.5);transform:translateY(-6px)}
+.v-card i{font-size:26px;color:var(--gold);margin-bottom:12px}
+.v-card h4{font-family:var(--font-d);font-size:1.25rem;margin-bottom:8px}
+.v-card p{color:var(--muted);font-size:.95rem}
+
+/* ===== CATEGORIES ===== */
+#categories{background:linear-gradient(180deg,var(--bg),var(--bg2))}
+.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+.cat{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:22px;padding:38px 30px;text-align:center;position:relative;overflow:hidden;transition:.4s}
+.cat::before{content:"";position:absolute;inset:0;background:radial-gradient(400px 220px at 50% -10%,rgba(201,161,92,.22),transparent);opacity:0;transition:.4s}
+.cat:hover::before{opacity:1}
+.cat:hover{transform:translateY(-10px);border-color:rgba(201,161,92,.5);box-shadow:0 30px 60px rgba(0,0,0,.45)}
+.cat .ico{width:92px;height:92px;margin:0 auto 20px;border-radius:26px;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 16px 34px rgba(0,0,0,.35)}
+.cat .ico img{width:58px;height:58px;object-fit:contain}
+.cat h3{font-family:var(--font-d);font-size:1.7rem;margin-bottom:10px}
+.cat p{color:var(--muted);font-size:.95rem;margin-bottom:20px}
+.cat .count{position:absolute;top:18px;right:22px;font-family:var(--font-d);font-size:2rem;color:rgba(255,255,255,.1)}
+.link-more{color:var(--gold2);font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase}
+.link-more:hover{color:#fff}
+
+/* ===== PROJECTS ===== */
+.filter{display:flex;gap:10px;flex-wrap:wrap;margin:30px 0 34px}
+.filter button{border:1px solid var(--line);background:rgba(255,255,255,.04);color:#d6dbe3;padding:11px 22px;border-radius:100px;font-weight:700;font-size:13px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:.3s}
+.filter button.on,.filter button:hover{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#141414;border-color:transparent}
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.proj{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:.45s cubic-bezier(.2,.7,.2,1);opacity:1}
+.proj.hide{display:none}
+.proj:hover{transform:translateY(-10px) scale(1.01);border-color:rgba(201,161,92,.55);box-shadow:0 34px 70px rgba(0,0,0,.5)}
+.proj .ph{height:230px;overflow:hidden;position:relative}
+.proj .ph img{width:100%;height:100%;object-fit:cover;transition:transform .9s}
+.proj:hover .ph img{transform:scale(1.12)}
+.proj .tag{position:absolute;top:14px;left:14px;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);border:1px solid rgba(201,161,92,.5);color:var(--gold2);font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:7px 14px;border-radius:100px;font-weight:800}
+.proj .pb{padding:22px}
+.proj .pb h3{font-family:var(--font-d);font-size:1.35rem;margin-bottom:6px}
+.proj .pb p{color:var(--muted);font-size:.9rem;min-height:42px}
+.proj .loc{display:flex;align-items:center;gap:8px;color:var(--gold2);font-size:13px;margin:10px 0 16px}
+.proj .row{display:flex;gap:10px}
+.mini-btn{flex:1;text-align:center;padding:11px;border-radius:12px;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;cursor:pointer;border:1px solid var(--line);background:rgba(255,255,255,.04);color:#fff;transition:.3s}
+.mini-btn:hover{background:var(--gold);color:#111;border-color:var(--gold)}
+.mini-btn.solid{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#141414;border:0}
+.spot{background:linear-gradient(135deg,rgba(201,161,92,.16),rgba(201,161,92,.04));border:1px solid rgba(201,161,92,.4);border-radius:22px;padding:34px;margin-top:44px;display:grid;grid-template-columns:1.2fr .8fr;gap:26px;align-items:center}
+.spot h3{font-family:var(--font-d);font-size:clamp(1.4rem,2.6vw,2rem);margin-bottom:10px}
+.spec-chips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+.spec-chips span{font-size:12px;background:rgba(0,0,0,.4);border:1px solid var(--line);padding:7px 13px;border-radius:100px;color:#d6dbe3}
+.spot img{border-radius:16px;height:300px;width:100%;object-fit:cover}
+
+/* ===== DIRECTORS ===== */
+#directors{background:var(--bg2)}
+.dir-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+.dir{background:#0f1622;border:1px solid var(--line);border-radius:22px;overflow:hidden;text-align:center;transition:.4s}
+.dir:hover{transform:translateY(-10px);border-color:rgba(201,161,92,.5);box-shadow:0 30px 60px rgba(0,0,0,.5)}
+.dir .dph{height:340px;overflow:hidden;position:relative}
+.dir .dph img{width:100%;height:100%;object-fit:cover;object-position:top;transition:.8s}
+.dir:hover .dph img{transform:scale(1.07)}
+.dir .dph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(10,13,18,.9))}
+.dir .db{padding:26px}
+.dir h3{font-family:var(--font-d);font-size:1.5rem}
+.dir .role{color:var(--gold2);font-size:12px;letter-spacing:3px;text-transform:uppercase;font-weight:700}
+.socials{display:flex;justify-content:center;gap:10px;margin-top:16px}
+.socials a{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.06);border:1px solid var(--line);transition:.3s;font-size:16px}
+.socials a:hover{background:var(--gold);color:#111;transform:translateY(-3px)}
+
+/* ===== SERVICES / WHY ===== */
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:44px}
+.why{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:18px;padding:30px 24px;transition:.35s}
+.why:hover{background:rgba(201,161,92,.08);transform:translateY(-8px)}
+.why i{font-size:30px;color:var(--gold);margin-bottom:14px;display:block}
+.why h4{margin-bottom:8px;font-size:1.05rem}
+.why p{color:var(--muted);font-size:.9rem}
+.cta-band{margin-top:50px;background:linear-gradient(120deg,#1c1408,#2b2010 40%,#141a26);border:1px solid rgba(201,161,92,.45);border-radius:24px;padding:48px;display:flex;align-items:center;justify-content:space-between;gap:26px;flex-wrap:wrap;position:relative;overflow:hidden}
+.cta-band::after{content:"";position:absolute;width:420px;height:420px;right:-140px;top:-140px;background:radial-gradient(circle,rgba(201,161,92,.28),transparent 70%)}
+.cta-band h3{font-family:var(--font-d);font-size:clamp(1.5rem,3vw,2.3rem)}
+
+/* ===== GALLERY ===== */
+#media{background:var(--bg2);overflow:hidden}
+.g-strip{display:flex;gap:16px;margin-top:40px;overflow-x:auto;padding-bottom:14px;scroll-snap-type:x mandatory}
+.g-strip::-webkit-scrollbar{height:6px}
+.g-strip::-webkit-scrollbar-thumb{background:var(--gold);border-radius:99px}
+.g-strip img{height:260px;width:380px;object-fit:cover;border-radius:18px;flex-shrink:0;scroll-snap-align:start;border:1px solid var(--line);transition:.4s;cursor:pointer}
+.g-strip img:hover{transform:scale(1.03);border-color:var(--gold)}
+
+/* ===== CONTACT ===== */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:44px}
+.info-cards{display:grid;gap:14px}
+.icard{display:flex;gap:16px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;transition:.3s}
+.icard:hover{border-color:rgba(201,161,92,.5)}
+.icard i{width:48px;height:48px;flex-shrink:0;border-radius:14px;background:rgba(201,161,92,.14);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:20px}
+.icard h4{font-size:.95rem;margin-bottom:2px}
+.icard p,.icard a{color:var(--muted);font-size:.92rem}
+.icard a:hover{color:var(--gold2)}
+form.contact{background:#0f1622;border:1px solid var(--line);border-radius:20px;padding:34px;display:grid;gap:14px}
+form.contact h3{font-family:var(--font-d);font-size:1.6rem}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+input,select,textarea{background:#0a0f17;border:1px solid var(--line);border-radius:12px;padding:14px 16px;color:#fff;font-family:inherit;font-size:.95rem;width:100%;outline:none;transition:.3s}
+input:focus,select:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,161,92,.18)}
+textarea{min-height:120px;resize:vertical}
+.map{margin-top:24px;border-radius:20px;overflow:hidden;border:1px solid var(--line)}
+.map iframe{width:100%;height:340px;border:0;filter:grayscale(.4) contrast(1.05)}
+#formMsg{display:none;background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.4);color:#86efac;padding:14px;border-radius:12px;font-size:.9rem}
+
+/* ===== FOOTER ===== */
+footer{background:#070a0f;border-top:1px solid var(--line);padding:70px 0 0;margin-top:40px}
+.f-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:34px}
+.f-grid img.flogo{width:170px;background:#fff;border-radius:12px;padding:8px 12px;margin-bottom:16px}
+.f-grid p{color:var(--muted);font-size:.92rem}
+.f-grid h4{font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--gold2);margin-bottom:18px}
+.f-grid ul{list-style:none;display:grid;gap:10px}
+.f-grid ul a{color:var(--muted);font-size:.93rem;transition:.25s}
+.f-grid ul a:hover{color:var(--gold2);padding-left:6px}
+.secure-note{margin-top:26px;background:rgba(34,197,94,.08);border:1px dashed rgba(34,197,94,.4);border-radius:14px;padding:14px 16px;font-size:.82rem;color:#86efac}
+.copy{margin-top:46px;border-top:1px solid var(--line);padding:22px 0;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:.85rem}
+
+/* ===== FLOATING ===== */
+#toTop{position:fixed;right:22px;bottom:96px;width:48px;height:48px;border-radius:50%;border:1px solid rgba(201,161,92,.5);background:#101724;color:var(--gold2);cursor:pointer;opacity:0;visibility:hidden;transition:.35s;z-index:900;font-size:18px}
+#toTop.show{opacity:1;visibility:visible}
+.float-wa{position:fixed;right:22px;bottom:30px;width:56px;height:56px;border-radius:50%;background:#25d366;color:#fff;display:flex;align-items:center;justify-content:center;font-size:28px;z-index:900;box-shadow:0 14px 34px rgba(37,211,102,.45);transition:.3s}
+.float-wa:hover{transform:scale(1.1)}
+
+/* ===== MODAL / LIGHTBOX ===== */
+#modal{position:fixed;inset:0;z-index:5000;background:rgba(4,6,10,.8);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:20px}
+#modal.open{display:flex}
+.modal-box{background:#101724;border:1px solid rgba(201,161,92,.4);border-radius:22px;max-width:760px;width:100%;max-height:90vh;overflow:auto;animation:pop .4s cubic-bezier(.2,.9,.3,1.2)}
+@keyframes pop{from{transform:scale(.9) translateY(20px);opacity:0}}
+.modal-box img{width:100%;height:320px;object-fit:cover}
+.modal-body{padding:30px}
+.modal-body h3{font-family:var(--font-d);font-size:1.8rem;margin-bottom:8px}
+#lightbox{position:fixed;inset:0;z-index:6000;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;flex-direction:column;gap:16px;padding:24px}
+#lightbox.open{display:flex}
+#lightbox img{max-width:min(1000px,92vw);max-height:76vh;border-radius:16px;border:1px solid var(--line)}
+#lightbox p{color:var(--muted)}
+
+@media(max-width:1020px){
+  .links,.nav-cta .call-pill{display:none}
+  #hamburger{display:block}
+  .mobile-menu{position:fixed;top:0;right:0;bottom:0;width:min(340px,84vw);background:#0d1320;border-left:1px solid var(--line);z-index:1500;padding:30px;display:flex!important;flex-direction:column;gap:8px;transform:translateX(105%);transition:.4s;overflow:auto}
+  .mobile-menu.open{transform:none}
+  .mobile-menu a{padding:14px;border-radius:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;font-size:13px}
+  .mobile-menu a:hover{background:rgba(201,161,92,.12)}
+  .about-grid,.contact-grid,.spot{grid-template-columns:1fr}
+  .cat-grid,.proj-grid,.dir-grid{grid-template-columns:1fr 1fr}
+  .why-grid{grid-template-columns:1fr 1fr}
+  .f-grid{grid-template-columns:1fr 1fr}
+  .hero-stats{grid-template-columns:1fr 1fr}
+  .hero-layout{grid-template-columns:1fr}
+  .hero-copy{padding-left:0}
+  .glass-card{width:min(78vw,340px)}
+  .glass-card img{height:360px}
+  section{padding:80px 0}
+}
+@media(max-width:640px){
+  .container{width:88%}
+  .cat-grid,.proj-grid,.dir-grid,.why-grid,.frow{grid-template-columns:1fr}
+  .brand img{width:120px}
+  .exp-card{right:10px}
+  /* hero breathing room on small screens */
+  #home{padding:128px 0 0}
+  .hero-inner{padding:0 12px 30px}
+  #home h1{font-size:clamp(1.85rem,10vw,2.5rem);margin:18px 0 14px}
+  .hero-badge{font-size:10px;letter-spacing:2px;padding:8px 14px;line-height:1.7;border-radius:18px}
+  .hero-sub{font-size:.96rem}
+  .hero-meta{gap:10px;margin-top:20px}
+  .hero-meta span{font-size:12px;padding:8px 13px}
+  .hero-btns .btn{padding:14px 24px;font-size:12px}
+  .hero-stats{margin-top:34px}
+  .hstat{padding:20px 10px}
+}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+<div class="cursor-dot" id="cDot"></div>
+<div class="cursor-ring" id="cRing"></div>
+
+<!-- LOADER -->
+<div id="loader">
+  <img class="l-logo" src="http://www.ultimaterealtors.in/wp-content/uploads/2022/12/Logo-Ultimate-Realtors-173x72.png" alt="Ultimate Realtors" style="background:#fff;border-radius:14px;padding:10px 16px" />
+  <div class="l-pct" id="lPct">0%</div>
+  <div class="l-bar"><div class="l-fill" id="lFill"></div></div>
+  <div class="l-sub">Building your vision …</div>
+</div>
+<div id="curtain"></div>
+
+<!-- NAV -->
+<header id="header">
+  <div class="container nav">
+    <a class="brand" href="#home"><img src="http://www.ultimaterealtors.in/wp-content/uploads/2022/12/Logo-Ultimate-Realtors-173x72.png" alt="Ultimate Realtors logo" /></a>
+    <nav class="links">
+      <a href="#home" class="active">Home</a>
+      <a href="#about">About</a>
+      <span class="has-drop">
+        <a href="#projects">Projects ▾</a>
+        <span class="drop">
+          <a href="#projects" data-filter-link="residential">Residential</a>
+          <a href="#projects" data-filter-link="commercial">Commercial</a>
+          <a href="#projects" data-filter-link="industrial">Industrial</a>
+        </span>
+      </span>
+      <a href="#directors">Directors</a>
+      <a href="#media">Media</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="call-pill" href="tel:+919914000752"><i class="fa-solid fa-phone"></i> 99140 00752</a>
+      <button id="hamburger" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu" id="mMenu">
+  <button id="mClose" style="align-self:flex-end;background:none;border:1px solid var(--line);color:#fff;border-radius:10px;padding:8px 12px;cursor:pointer"><i class="fa-solid fa-xmark"></i></button>
+  <a href="#home">Home</a><a href="#about">About</a><a href="#projects">Projects</a>
+  <a href="#directors">Directors</a><a href="#media">Media</a><a href="#contact">Contact Us</a>
+  <a href="tel:+919914000752" style="background:linear-gradient(135deg,var(--gold2),var(--gold));color:#111;text-align:center;margin-top:10px">Call 99140 00752</a>
+</div>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg">
+    <div class="hero-slide on" style="background-image:url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1800&q=80')"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1800&q=80')"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1800&q=80')"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1800&q=80')"></div>
+  </div>
+  <div class="container hero-inner">
+   <div class="hero-layout">
+    <div class="hero-copy">
+    <span class="hero-badge"><span class="dot"></span> Tricity's Trusted Advisory · Since 2012</span>
+    <h1>
+      <span class="line"><span>Welcome to the</span></span>
+      <span class="line"><span class="gold">Ultimate Realtors</span></span>
+      <span class="line"><span>Where We Build Your Visions</span></span>
+    </h1>
+    <p class="hero-sub">A Real Estate Advisory firm running in Tricity for <b>12+ years</b> — Chandigarh, New Chandigarh, Mohali, Panchkula, Zirakpur &amp; Aerocity. Due diligence, valuations &amp; documentation, done professionally.</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn btn-gold">Explore Projects <i class="fa-solid fa-arrow-right"></i></a>
+      <a href="tel:+919914000752" class="btn btn-ghost"><i class="fa-solid fa-phone"></i> Call Us Today</a>
+    </div>
+    <div class="hero-meta">
+      <span><i class="fa-solid fa-location-dot"></i> Chandigarh · Mohali · Panchkula · Zirakpur</span>
+      <span><i class="fa-solid fa-shield-halved"></i> Due Diligence Experts</span>
+      <span><i class="fa-solid fa-clock"></i> Open All Days · 10 AM – 7 PM</span>
+    </div>
+    </div>
+    <div class="hero-visual">
+      <div class="glass-card">
+        <img src="https://images.unsplash.com/photo-1554469384-e58fac16e23a?w=900&q=80" alt="Modern glass residential tower" />
+        <span class="glass-chip chip-a"><i class="fa-solid fa-award"></i> 12+ Years in Tricity</span>
+        <span class="glass-chip chip-b"><i class="fa-solid fa-building"></i> 18+ Curated Projects</span>
+      </div>
+    </div>
+   </div>
+    <div class="hero-dots" id="heroDots"><button class="on"></button><button></button><button></button><button></button></div>
+    <div class="hero-stats stagger" id="heroStats">
+      <div class="hstat"><b><span class="count" data-to="12">0</span>+</b><small>Years in Tricity</small></div>
+      <div class="hstat"><b><span class="count" data-to="6">0</span></b><small>Regions Covered</small></div>
+      <div class="hstat"><b><span class="count" data-to="18">0</span>+</b><small>Curated Projects</small></div>
+      <div class="hstat"><b><span class="count" data-to="3">0</span></b><small>Verticals</small></div>
+    </div>
+  </div>
+</section>
+<div class="scroll-hint"><div class="mouse"></div> Scroll to experience</div>
+
+<div class="marquee"><div class="track" id="marqueeTrack">
+  <span>✦ Residential</span><span>✦ Commercial</span><span>✦ Industrial</span><span>✦ Chandigarh</span><span>✦ Mohali</span><span>✦ Panchkula</span><span>✦ Zirakpur</span><span>✦ Aerocity</span><span>✦ Due Diligence</span><span>✦ Valuations</span>
+</div></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <span class="eyebrow" data-reveal>Our Story</span>
+    <div class="about-grid">
+      <div class="about-media" data-reveal="left">
+        <div class="main"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80" alt="Luxury home" /></div>
+        <div class="exp-card"><b>12+</b><small style="letter-spacing:2px;text-transform:uppercase;color:var(--muted)">Years of<br/>Excellence</small></div>
+      </div>
+      <div data-reveal="right">
+        <h2 class="h2">Perfection &amp; dedication to fulfil <em>commitments</em></h2>
+        <p class="lead" style="margin-top:16px">“Ultimate Realtors” as the name defines. Clear vision, expertise, honesty and good corporate governance is behind our success. Our innovative approach has given new dimensions to the real-estate market — quality and comfort at affordable prices. Truly, another name for <b style="color:var(--gold2)">Value for Money</b>.</p>
+        <ul class="checks">
+          <li><i class="fa-solid fa-circle-check"></i> Professional Specialist</li>
+          <li><i class="fa-solid fa-circle-check"></i> Brilliant Ideas</li>
+          <li><i class="fa-solid fa-circle-check"></i> Precise Builders</li>
+          <li><i class="fa-solid fa-circle-check"></i> 24/7 Assistance</li>
+        </ul>
+        <p style="color:var(--muted);font-size:.95rem">The quickest developing organisation in the online land space working since 2007 — born to remove fake postings and endless site visits, backed by passionate problem solvers.</p>
+        <div class="vision">
+          <div class="v-card"><i class="fa-solid fa-eye"></i><h4>Our Vision</h4><p>To become the most confided setup for land in India.</p></div>
+          <div class="v-card"><i class="fa-solid fa-bullseye"></i><h4>Our Mission</h4><p>To disentangle land for everybody — buy &amp; sell homes in a speedy, shrewd and simple way.</p></div>
+        </div>
+        <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap">
+          <a href="#directors" class="btn btn-gold">Meet Directors</a>
+          <a href="#contact" class="btn btn-ghost">More About Company</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section id="categories">
+  <div class="container">
+    <span class="eyebrow" data-reveal>Our Categories</span>
+    <h2 class="h2" data-reveal>Closely scrutinised. Soundly <em>invested.</em></h2>
+    <p class="lead" data-reveal style="margin-top:12px">Majority of the projects we undertake are closely scrutinized and invested into, so that you can get a better price and a sound choice.</p>
+    <div class="cat-grid stagger">
+      <div class="cat">
+        <span class="count">01</span>
+        <div class="ico"><img src="http://www.ultimaterealtors.in/wp-content/uploads/2022/11/apartment-2.png" alt="Commercial icon" /></div>
+        <h3>Commercial</h3>
+        <p>Dynamic commercial real-estate, integrating the technological and physical world with deep research — 7 curated assets.</p>
+        <a class="link-more" href="#projects" data-filter-link="commercial">View projects →</a>
+      </div>
+      <div class="cat">
+        <span class="count">02</span>
+        <div class="ico"><img src="http://www.ultimaterealtors.in/wp-content/uploads/2022/11/home-2.png" alt="Residential icon" /></div>
+        <h3>Residential</h3>
+        <p>Buy, lease or sell homes with project marketing, valuations &amp; investment advice — 8 signature residences.</p>
+        <a class="link-more" href="#projects" data-filter-link="residential">View projects →</a>
+      </div>
+      <div class="cat">
+        <span class="count">03</span>
+        <div class="ico"><img src="http://www.ultimaterealtors.in/wp-content/uploads/2022/11/factory.png" alt="Industrial icon" /></div>
+        <h3>Industrial</h3>
+        <p>IT &amp; manufacturing parks and industrial plots across Mohali's growth corridor — 3 industrial assets.</p>
+        <a class="link-more" href="#projects" data-filter-link="industrial">View projects →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <span class="eyebrow" data-reveal>Our Projects</span>
+    <h2 class="h2" data-reveal>Every project, <em>a sound choice.</em></h2>
+    <p class="lead" data-reveal style="margin-top:12px">All 18 live listings from ultimaterealtors.in — same data &amp; imagery, re-presented. Click any card for details.</p>
+    <div class="filter" data-reveal>
+      <button class="on" data-filter="all">All · 18</button>
+      <button data-filter="residential">Residential · 8</button>
+      <button data-filter="commercial">Commercial · 7</button>
+      <button data-filter="industrial">Industrial · 3</button>
+    </div>
+    <div class="proj-grid stagger" id="projGrid"></div>
+
+    <div class="spot" data-reveal>
+      <div>
+        <span class="eyebrow">Spotlight · Medallion, IT City Mohali</span>
+        <h3>Premium 3 / 4 BHK &amp; penthouses on 200-ft Airport Road</h3>
+        <p style="color:var(--muted)">By Turnstone Realty, Sector 82-A Mohali. Every flat a corner flat — sunlight &amp; ventilation. Dedicated tower lobbies and the first double-height podium parking in Tri-city.</p>
+        <div class="spec-chips">
+          <span>Terrace Lounge</span><span>Swimming Pool</span><span>Spa &amp; Sauna</span><span>Gymnasium</span><span>Co-Working</span><span>Cricket Pitch</span><span>Tennis Court</span><span>4-Tier Security</span><span>24×7 Ambulance</span><span>Restaurant &amp; Café</span>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-gold" href="http://www.ultimaterealtors.in/properties/madellion/" target="_blank" rel="noopener">View Original Listing</a>
+          <a class="btn btn-ghost" href="tel:+919914000752">Enquire Now</a>
+        </div>
+      </div>
+      <img src="http://www.ultimaterealtors.in/wp-content/uploads/2022/12/medallion_glimpse10-1.jpg" alt="Medallion project" loading="lazy" />
+    </div>
+  </div>
+</section>
+
+<!-- DIRECTORS -->
+<section id="directors">
+  <div class="container">
+    <span class="eyebrow" data-reveal>About Directors</span>
+    <h2 class="h2" data-reveal>The people behind <em>the promise.</em></h2>
+    <p class="lead" data-reveal style="margin-top:12px">Residential, Commercial &amp; Industrial dealing services — best-quality counsel with the latest market technology and a client-centric approach.</p>
+    <div class="dir-grid stagger">
+      <div class="dir">
+        <div class="dph"><img src="http://www.ultimaterealtors.in/wp-content/uploads/elementor/thumbs/p-1-scaled-pzg1b0pdcfxek06d88zju68v0up5kdh3qvj1u5iz08.jpg" alt="Neeraj Kumar" loading="lazy" /></div>
+        <div class="db"><h3>Neeraj Kumar</h3><div class="role">Director</div>
+          <div class="socials">
+            <a href="tel:+919914000752" title="Call"><i class="fa-solid fa-phone"></i></a>
+            <a href="https://wa.me/+919914000752" target="_blank" rel="noopener" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://www.facebook.com/neeraj.chilana" target="_blank" rel="noopener" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.twitter.com/NKChilana" target="_blank" rel="noopener" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          </div></div>
+      </div>
+      <div class="dir">
+        <div class="dph"><img src="http://www.ultimaterealtors.in/wp-content/uploads/elementor/thumbs/p-2-scaled-pzg1b0pdcfxek06d88zju68v0up5kdh3qvj1u5iz08.jpg" alt="Ankit Sethi" loading="lazy" /></div>
+        <div class="db"><h3>Ankit Sethi</h3><div class="role">Director</div>
+          <div class="socials">
+            <a href="tel:+919914000852" title="Call"><i class="fa-solid fa-phone"></i></a>
+            <a href="https://wa.me/+919914000852" target="_blank" rel="noopener" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://www.facebook.com/ankit.sethi.ftb?mibextid=ZbWKwL" target="_blank" rel="noopener" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://twitter.com/AnkitSethiFtb?t=sFxAzO-vI6_LZGjaGFZVAA&s=09" target="_blank" rel="noopener" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          </div></div>
+      </div>
+      <div class="dir">
+        <div class="dph"><img src="http://www.ultimaterealtors.in/wp-content/uploads/elementor/thumbs/p-3-scaled-pzg1b0pdcfxek06d88zju68v0up5kdh3qvj1u5iz08.jpg" alt="Hitesh Chilana" loading="lazy" /></div>
+        <div class="db"><h3>Hitesh Chilana</h3><div class="role">Director</div>
+          <div class="socials">
+            <a href="tel:+919914000732" title="Call"><i class="fa-solid fa-phone"></i></a>
+            <a href="https://wa.me/+919914000732" target="_blank" rel="noopener" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://www.facebook.com/Hiteshchilana?mibextid=ZbWKwL" target="_blank" rel="noopener" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://twitter.com/hitesh61688483?t=r3Me7FAp4tHSoVp1qZpS-g&s=09" target="_blank" rel="noopener" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY / SERVICES -->
+<section id="services">
+  <div class="container">
+    <span class="eyebrow" data-reveal>What We Offer</span>
+    <h2 class="h2" data-reveal>The best service <em>in the industry.</em></h2>
+    <div class="why-grid stagger">
+      <div class="why"><i class="fa-solid fa-building"></i><h4>Commercial Property</h4><p>Research-led commercial platform integrating tech + physical markets since Sept 2014.</p></div>
+      <div class="why"><i class="fa-solid fa-house-chimney"></i><h4>Residential Property</h4><p>Global network for buying, leasing &amp; selling — marketing, valuations, investment.</p></div>
+      <div class="why"><i class="fa-solid fa-file-shield"></i><h4>Due Diligence</h4><p>Titles, valuations &amp; documentation handled professionally before you sign.</p></div>
+      <div class="why"><i class="fa-solid fa-headset"></i><h4>Friendly Advisory</h4><p>We learn your purpose of investment &amp; future expectations — then deliver.</p></div>
+    </div>
+    <div class="cta-band" data-reveal>
+      <div><h3>We provide the best service in industry.</h3><p style="color:var(--muted)">Talk to us today — friendly, professional, and available all days 10 AM – 7 PM.</p></div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;position:relative;z-index:1">
+        <a href="#contact" class="btn btn-gold">Contact Us Today</a>
+        <a href="https://wa.me/+919914000752" target="_blank" rel="noopener" class="btn btn-ghost"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEDIA -->
+<section id="media">
+  <div class="container">
+    <span class="eyebrow" data-reveal>Media Gallery</span>
+    <h2 class="h2" data-reveal>Check our updated <em>media gallery.</em></h2>
+    <p class="lead" data-reveal style="margin-top:12px">Real frames from our listed properties — drag / scroll sideways, click to enlarge.</p>
+  </div>
+  <div class="container"><div class="g-strip" id="gallery"></div></div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <span class="eyebrow" data-reveal>Get In Touch</span>
+    <h2 class="h2" data-reveal>Contact providers <em>right away.</em></h2>
+    <div class="contact-grid">
+      <div data-reveal="left">
+        <div class="info-cards">
+          <div class="icard"><i class="fa-solid fa-phone"></i><div><h4>Call Us</h4><p><a href="tel:+919914000732">+91 99140 00732</a> · <a href="tel:+919914000752">+91 99140 00752</a> · <a href="tel:+919914000852">+91 99140 00852</a></p></div></div>
+          <div class="icard"><i class="fa-solid fa-location-dot"></i><div><h4>Our Location</h4><p>SCO 24, First Floor, Mohali City Centre, Mohali</p></div></div>
+          <div class="icard"><i class="fa-solid fa-envelope"></i><div><h4>Our Email</h4><p><a href="mailto:info@ultimaterealtors.in">info@ultimaterealtors.in</a></p></div></div>
+          <div class="icard"><i class="fa-solid fa-clock"></i><div><h4>Working Hours</h4><p>Mon–Fri: 10 AM – 7 PM<br/>Sat–Sun: 10 AM – 7 PM</p></div></div>
+        </div>
+        <div class="map"><iframe title="Ultimate Realtors location" loading="lazy" src="https://www.google.com/maps?q=Mohali+City+Centre,+Mohali&output=embed"></iframe></div>
+      </div>
+      <form class="contact" id="contactForm" data-reveal="right">
+        <h3>Send Us A Message</h3>
+        <p style="color:var(--muted);font-size:.92rem">We usually respond within business hours.</p>
+        <div id="formMsg">✓ Thank you! Your message has been noted. Please call <b>+91 99140 00752</b> for an instant response — this demo form does not send email.</div>
+        <div class="frow"><input required name="name" placeholder="Your Name *" /><input required type="tel" name="phone" placeholder="Phone *" /></div>
+        <input type="email" name="email" placeholder="Email Address" />
+        <select name="interest"><option>Interested in: Residential</option><option>Interested in: Commercial</option><option>Interested in: Industrial</option><option>General Enquiry</option></select>
+        <textarea name="message" placeholder="Tell us about your requirement …"></textarea>
+        <button class="btn btn-gold" type="submit" style="justify-content:center">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <img class="flogo" src="http://www.ultimaterealtors.in/wp-content/uploads/2022/12/Logo-Ultimate-Realtors-173x72.png" alt="Ultimate Realtors" />
+        <p>Real Estate Advisory firm in Tricity for 12+ years. Chandigarh · New Chandigarh · Mohali · Panchkula · Zirakpur · Aerocity.</p>
+        <div class="secure-note">🔒 Revamp note: the original site runs on <b>plain HTTP</b> (not secure). This rebuild is HTTPS-ready — serve it over HTTPS with HSTS + redirect for trust &amp; SEO.</div>
+      </div>
+      <div><h4>Our Company</h4><ul><li><a href="#directors">Who We Are</a></li><li><a href="#about">About Company</a></li><li><a href="#categories">Services We Provide</a></li><li><a href="#projects">What We Have Done</a></li></ul></div>
+      <div><h4>Our Projects</h4><ul><li><a href="#projects" data-filter-link="commercial">Commercial</a></li><li><a href="#projects" data-filter-link="industrial">Industrial</a></li><li><a href="#projects" data-filter-link="residential">Residential</a></li><li><a href="#media">Media Gallery</a></li></ul></div>
+      <div><h4>Contact Details</h4><ul><li><a href="#contact">SCO 24, First Floor, Mohali City Centre, Mohali</a></li><li><a href="tel:+919914000732">+91 99140 00732</a></li><li><a href="tel:+919914000752">+91 99140 00752</a></li><li><a href="tel:+919914000852">+91 99140 00852</a></li><li><a href="mailto:info@ultimaterealtors.in">info@ultimaterealtors.in</a></li></ul></div>
+    </div>
+    <div class="copy"><span>Copyright © 2026 Ultimate Realtors · Revamped immersive concept preserving all original data &amp; imagery.</span><span>Original build by Speedoring Advertising · Data source: ultimaterealtors.in</span></div>
+  </div>
+</footer>
+
+<button id="toTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+<a class="float-wa" href="https://wa.me/+919914000752" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+
+<!-- MODAL + LIGHTBOX -->
+<div id="modal"><div class="modal-box"><img id="mImg" src="" alt="" /><div class="modal-body"><span class="eyebrow" id="mTag"></span><h3 id="mTitle"></h3><p id="mDesc" style="color:var(--muted)"></p><p class="loc" id="mLoc" style="margin:12px 0;color:var(--gold2)"></p><div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px"><a id="mOrig" class="mini-btn solid" target="_blank" rel="noopener">Original listing ↗</a><a class="mini-btn" href="tel:+919914000752">Call to enquire</a><button class="mini-btn" id="mClose">Close</button></div></div></div></div>
+<div id="lightbox"><img id="lbImg" src="" alt="" /><p>Click anywhere to close</p></div>
+
+<script>
+/* ============ DATA — 100% from ultimaterealtors.in ============ */
+const PROJECTS=[
+ {t:"Dholera",c:"residential",img:"https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=900&q=70",loc:"Dholera Smart City",d:"Land / investment opportunity in India's first greenfield smart city — Gujarat's high-growth corridor.",url:"http://www.ultimaterealtors.in/properties/dholera/"},
+ {t:"Escon Primera",c:"residential",img:"http://www.ultimaterealtors.in/wp-content/uploads/2022/12/horizon.jpg",loc:"Zirakpur / Mohali",d:"Signature residential offering with modern elevations and family-first planning.",url:"http://www.ultimaterealtors.in/properties/escon-primera/"},
+ {t:"Medallion",c:"residential",img:"http://www.ultimaterealtors.in/wp-content/uploads/2022/12/medallion_glimpse10-1.jpg",loc:"IT City, Sector 82-A, Mohali",d:"Premium 3/4 BHK & penthouses by Turnstone Realty on 200-ft Airport Road. Corner flats, podium parking, 25+ amenities.",url:"http://www.ultimaterealtors.in/properties/madellion/"},
+ {t:"Ambika La Parisian",c:"residential",img:"http://www.ultimaterealtors.in/wp-content/uploads/2022/11/1280.png",loc:"Mullanpur, New Chandigarh",d:"Parisian-themed residences bringing European elegance to New Chandigarh.",url:"http://www.ultimaterealtors.in/properties/ambika-la-parisian/"},
+ {t:"Horizon",c:"residential",img:"http://www.ultimaterealtors.in/wp-content/uploads/2022/12/horizon.jpg",loc:"Mohali",d:"Contemporary homes with open views and refined specifications.",url:"http://www.ultimaterealtors.in/properties/horizon/"},
+ {t:"Hero Homes",c:"residential",img:"http://www.ultimaterealtors.in/wp-content/uploads/2022/10/deskslider080822.jpg",loc:"Sector 88, Mohali",d:"Branded developer residences known for construction quality and community living.",url:"http://www.ultimaterealtors.in/properties/hero-homes/"},
+ {t:"Marbella Grand",c:"residential",img:"http://www.ultimaterealtors.in/wp-content/uploads/2022/10/13.webp",loc:"Aerocity, Mohali",d:"Grand-format homes near the airport corridor with luxury club amenities.",url:"http://www.ultimaterealtors.in/properties/marbella-grand/"},
+ {t:"Noble Callista",c:"residential",img:"http://www.ultimaterealtors.in/wp-content/uploads/2022/10/swimming-pool.jpg",loc:"Zirakpur",d:"Resort-style living with swimming pool and leisure-first amenities.",url:"http://www.ultimaterealtors.in/properties/nobble-callista/"},
+ {t:"IT City Commercial",c:"commercial",img:"http://www.ultimaterealtors.in/wp-content/uploads/2022/11/IT_City-Commercial.jpg",loc:"IT City, Mohali",d:"High-street retail & office spaces in Mohali's IT growth node.",url:"http://www.ultimaterealtors.in/properties/it-city-commercial/"},
+ {t:"Aero City Commercial",c:"commercial",img:"http://www.ultimaterealtors.in/wp-content/uploads/2022/11/AddText_01-19-03.21.44.jpg",loc:"Aerocity, Mohali",d:"Airport-road commercial asset with premium frontage and footfall.",url:"http://www.ultimaterealtors.in/properties/aero-city-commercial/"},
+ {t:"Mohali Citi Centre 3",c:"commercial",img:"http://www.ultimaterealtors.in/wp-content/uploads/2022/11/pexels-jimmy-chan-2552595-scaled.jpg",loc:"Mohali City Centre",d:"Phase-3 commercial inventory in the heart of Mohali City Centre.",url:"http://www.ultimaterealtors.in/properties/mohali-city-centre-3/"},
+ {t:"Mohali Citi Centre 2",c:"commercial",img:"http://www.ultimaterealtors.in/wp-content/uploads/2022/11/pexels-jimmy-chan-998499-scaled.jpg",loc:"Mohali City Centre",d:"Phase-2 commercial spaces — our very own business address.",url:"http://www.ultimaterealtors.in/properties/mohali-city-centre-2/"},
+ {t:"Gillco Commercial",c:"commercial",img:"http://www.ultimaterealtors.in/wp-content/uploads/2022/10/pexels-laura-tancredi-7078177-scaled.jpg",loc:"Gillco Valley, Mohali",d:"Neighbourhood commercial in the Gillco growth pocket.",url:"http://www.ultimaterealtors.in/properties/property-three/"},
+ {t:"VIP Central",c:"commercial",img:"http://www.ultimaterealtors.in/wp-content/uploads/2022/10/pexels-andreea-ch-4178801-scaled.jpg",loc:"Zirakpur",d:"Central high-street commercial on the VIP Road corridor.",url:"http://www.ultimaterealtors.in/properties/property-two/"},
+ {t:"Mohali Citi Centre",c:"commercial",img:"http://www.ultimaterealtors.in/wp-content/uploads/2022/10/pexels-lukas-hartmann-1827234-1-scaled.jpg",loc:"Mohali City Centre",d:"Flagship commercial destination in Mohali City Centre.",url:"http://www.ultimaterealtors.in/properties/property-one/"},
+ {t:"IT Industrial",c:"industrial",img:"http://www.ultimaterealtors.in/wp-content/uploads/2022/10/1674117342298.jpg",loc:"IT City, Mohali",d:"Industrial plots & built-ups in the IT City industrial belt.",url:"http://www.ultimaterealtors.in/properties/it-industrial/"},
+ {t:"JLPL Industrial",c:"industrial",img:"http://www.ultimaterealtors.in/wp-content/uploads/2022/10/pexels-olga-lioncat-7245333-scaled.jpg",loc:"JLPL, Mohali",d:"Industrial inventory in the JLPL estate with clear titles.",url:"http://www.ultimaterealtors.in/properties/jlpl-industrial/"},
+ {t:"Gillco Industrial Park",c:"industrial",img:"http://www.ultimaterealtors.in/wp-content/uploads/2022/10/1674117517210-e1674120880883.jpg",loc:"Gillco, Mohali",d:"Organised industrial park plots for manufacturing & logistics.",url:"http://www.ultimaterealtors.in/properties/gillco-industrial/"}
+];
+const grid=document.getElementById('projGrid');
+function card(p){
+  const el=document.createElement('article');
+  el.className='proj';el.dataset.cat=p.c;
+  el.innerHTML=`<div class="ph"><img loading="lazy" src="${p.img}" alt="${p.t}"/><span class="tag">${p.c}</span></div>
+  <div class="pb"><h3>${p.t}</h3><p>${p.d}</p>
+  <div class="loc"><i class="fa-solid fa-location-dot"></i> ${p.loc}</div>
+  <div class="row"><button class="mini-btn solid" data-view="${p.t}">Details</button><a class="mini-btn" href="${p.url}" target="_blank" rel="noopener">Original ↗</a></div></div>`;
+  return el;
+}
+PROJECTS.forEach(p=>grid.appendChild(card(p)));
+
+/* filter */
+const fbtns=[...document.querySelectorAll('.filter button')];
+function setFilter(f){
+  fbtns.forEach(b=>b.classList.toggle('on',b.dataset.filter===f));
+  document.querySelectorAll('.proj').forEach(el=>{
+    const show=f==='all'||el.dataset.cat===f;
+    el.classList.toggle('hide',!show);
+    if(show){el.style.animation='none';el.offsetHeight;el.style.animation='pop .5s ease';}
+  });
+}
+fbtns.forEach(b=>b.onclick=()=>setFilter(b.dataset.filter));
+document.querySelectorAll('[data-filter-link]').forEach(a=>a.addEventListener('click',()=>setFilter(a.dataset.filterLink)));
+
+/* modal */
+const modal=document.getElementById('modal');
+grid.addEventListener('click',e=>{
+  const b=e.target.closest('[data-view]');if(!b)return;
+  const p=PROJECTS.find(x=>x.t===b.dataset.view);
+  document.getElementById('mImg').src=p.img;
+  document.getElementById('mTag').textContent=p.c+' · Ultimate Realtors';
+  document.getElementById('mTitle').textContent=p.t;
+  document.getElementById('mDesc').textContent=p.d;
+  document.getElementById('mLoc').innerHTML='<i class="fa-solid fa-location-dot"></i> '+p.loc;
+  document.getElementById('mOrig').href=p.url;
+  modal.classList.add('open');document.body.style.overflow='hidden';
+});
+document.getElementById('mClose').onclick=closeM;
+modal.onclick=e=>{if(e.target===modal)closeM();};
+function closeM(){modal.classList.remove('open');document.body.style.overflow='';}
+
+/* gallery */
+const gal=document.getElementById('gallery');
+[...PROJECTS].slice(1).forEach(p=>{
+  const i=document.createElement('img');i.src=p.img;i.alt=p.t;i.loading='lazy';
+  i.onclick=()=>{document.getElementById('lbImg').src=p.img;document.getElementById('lightbox').classList.add('open');};
+  gal.appendChild(i);
+});
+document.getElementById('lightbox').onclick=e=>e.currentTarget.classList.remove('open');
+
+/* loader */
+let pct=0;const lPct=document.getElementById('lPct'),lFill=document.getElementById('lFill');
+const tick=setInterval(()=>{
+  pct=Math.min(100,pct+Math.random()*14);
+  lPct.textContent=Math.floor(pct)+'%';lFill.style.width=pct+'%';
+  if(pct>=100){clearInterval(tick);
+    setTimeout(()=>{document.getElementById('loader').classList.add('done');
+      document.getElementById('curtain').classList.add('lift');
+      document.querySelectorAll('#home h1 .line span').forEach(s=>s.style.animationPlayState='running');
+    },350);}
+},140);
+
+/* hero slider */
+const slides=[...document.querySelectorAll('.hero-slide')];
+const dots=[...document.querySelectorAll('#heroDots button')];
+let cur=0;
+function go(n){slides[cur].classList.remove('on');dots[cur].classList.remove('on');cur=(n+slides.length)%slides.length;slides[cur].classList.add('on');dots[cur].classList.add('on');}
+dots.forEach((d,i)=>d.onclick=()=>go(i));
+setInterval(()=>go(cur+1),7000);
+
+/* marquee dup */
+const mt=document.getElementById('marqueeTrack');mt.innerHTML+=mt.innerHTML;
+
+/* header + progress + toTop */
+const header=document.getElementById('header'),prog=document.getElementById('progress'),toTop=document.getElementById('toTop');
+addEventListener('scroll',()=>{
+  const y=scrollY;
+  header.classList.toggle('scrolled',y>40);
+  const h=document.documentElement.scrollHeight-innerHeight;
+  prog.style.width=(y/h*100)+'%';
+  toTop.classList.toggle('show',y>700);
+  /* hero parallax */
+  document.querySelector('.hero-bg').style.transform=`translateY(${y*.25}px)`;
+},{passive:true});
+toTop.onclick=()=>scrollTo({top:0,behavior:'smooth'});
+
+/* mobile menu */
+const mMenu=document.getElementById('mMenu');
+document.getElementById('hamburger').onclick=()=>mMenu.classList.add('open');
+document.getElementById('mClose').onclick=()=>mMenu.classList.remove('open');
+mMenu.querySelectorAll('a').forEach(a=>a.onclick=()=>mMenu.classList.remove('open'));
+
+/* reveal on scroll */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.14});
+document.querySelectorAll('[data-reveal],.stagger').forEach(el=>io.observe(el));
+
+/* counters */
+const cio=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;cio.unobserve(e.target);
+  document.querySelectorAll('.count').forEach(c=>{
+    const to=+c.dataset.to;let v=0;const step=Math.max(1,Math.round(to/60));
+    const t=setInterval(()=>{v+=step;if(v>=to){v=to;clearInterval(t);}c.textContent=v;},30);
+  });
+}),{threshold:.4});
+cio.observe(document.getElementById('heroStats'));
+
+/* nav active */
+const secs=['home','about','projects','directors','media','contact'];
+const navA=[...document.querySelectorAll('.links a')];
+const sio=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){navA.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id));}
+}),{rootMargin:'-40% 0px -55% 0px'});
+secs.forEach(id=>{const s=document.getElementById(id);if(s)sio.observe(s);});
+
+/* cursor */
+const dot=document.getElementById('cDot'),ring=document.getElementById('cRing');
+let mx=0,my=0,rx=0,ry=0;
+addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+(function loop(){rx+=(mx-rx)*.14;ry+=(my-ry)*.14;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('link-hover'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('link-hover'));
+});
+
+/* form */
+document.getElementById('contactForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  document.getElementById('formMsg').style.display='block';
+  e.target.querySelector('button').innerHTML='Message Noted ✓';
+  setTimeout(()=>e.target.reset(),800);
+});
+</script>
+</body>
+</html>
